@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Greg Bendolph</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+
+<div class="container mt-3">
+  <h2>Greg Bendolph/Background Color with Text</h2>
+  <p class="text-bg-primary">CSC 543</p>
+  <p class="text-bg-success">HW3 addition to HW2 </p>
+  <p class="text-bg-info">Adding different classes to the page</p>
+  
+</div>
+
+</body>
+</html>
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Greg Bendolph</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+  <h2>Button</h2>
+  <p>Basic Style, No function for the button as of yet.</p>
+  <button type="button" class="btn">Greg's Button</button>
+</div>
+
+</body>
+</html>
+
+
+
+
+
+<html>
+<head>
+<meta name="Greg Bendolph" content="width=device-width, initial-scale=1.0">
+<style>
+* {box-sizing: border-box;}
+
+.img-comp-container {
+  position: relative;
+  height: 500px; 
+}
+
+.img-comp-img {
+  position: absolute;
+  width: auto;
+  height: auto;
+  overflow:hidden;
+}
+
+.img-comp-img img {
+  display:block;
+}
+
+.img-comp-slider {
+  position: absolute;
+  z-index:9;
+  cursor: ew-resize;
+  width: 40px;
+  height: 40px;
+  background-color: red;
+  opacity: 0.7;
+  border-radius: 50%;
+}
+</style>
+<script>
+function initComparisons() {
+  var x, i;
+
+  x = document.getElementsByClassName("img-comp-overlay");
+  for (i = 0; i < x.length; i++) {
+   
+    compareImages(x[i]);
+  }
+  function compareImages(img) {
+    var slider, img, clicked = 0, w, h;
+    
+    w = img.offsetWidth;
+    h = img.offsetHeight;
+    
+    img.style.width = (w / 2) + "px";
+    
+    slider = document.createElement("DIV");
+    slider.setAttribute("class", "img-comp-slider");
+    
+    img.parentElement.insertBefore(slider, img);
+   
+    slider.style.top = (h / 2) - (slider.offsetHeight / 2) + "px";
+    slider.style.left = (w / 2) - (slider.offsetWidth / 2) + "px";
+    
+    slider.addEventListener("mousedown", slideReady);
+    
+    window.addEventListener("mouseup", slideFinish);
+    
+    slider.addEventListener("touchstart", slideReady);
+    
+    window.addEventListener("touchend", slideFinish);
+    function slideReady(e) {
+      
+      e.preventDefault();
+      
+      clicked = 1;
+      
+      window.addEventListener("mousemove", slideMove);
+      window.addEventListener("touchmove", slideMove);
+    }
+    function slideFinish() {
+      
+      clicked = 0;
+    }
+    function slideMove(e) {
+      var pos;
+      
+      if (clicked == 0) return false;
+      
+      pos = getCursorPos(e)
+      
+      if (pos < 0) pos = 0;
+      if (pos > w) pos = w;
+      
+      slide(pos);
+    }
+    function getCursorPos(e) {
+      var a, x = 0;
+      e = (e.changedTouches) ? e.changedTouches[0] : e;
+    
+      a = img.getBoundingClientRect();
+      
+      x = e.pageX - a.left;
+      
+      x = x - window.pageXOffset;
+      return x;
+    }
+    function slide(x) {
+      
+      img.style.width = x + "px";
+      
+      slider.style.left = img.offsetWidth - (slider.offsetWidth / 2) + "px";
+    }
+  }
+}
+</script>
+</head>
+<body>
+
+<h1>Comparing Two Images I've found on Google</h1>
+
+<p>Click and slide the round red slider in the middle to compare two images:</p>
+<p>Have Fun!</p>
+<h1 style="color: green;">Click and slide the round red slider in the middle to compare two images</h1>
+<div class="img-comp-container">
+  <div class="img-comp-img">
+    <img src="C:\Users\Amber Cheatham\Desktop\hw ass 2 csc 543\mountains.jpg" width="500" height="500">
+  </div>
+  <div class="img-comp-img img-comp-overlay">
+    <img src="C:\Users\Amber Cheatham\Desktop\hw ass 2 csc 543\peace tree.jpg" width="500" height="500">
+  </div>
+</div>
+
+<script>
+
+initComparisons();
+</script>
+
+</body>
+</html>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Greg Bendolph</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container-fluid">
+  <h1>Addition to HW2</h1>
+  <p>I displayed an overlay of 2 pictures in this assignment.</p>
+  <p>Scroll up to use the overlay and display both pictures.</p>
+  <div class="row">
+    <div class="col-sm-3" style="background-color:yellow;">
+      Using BootStrap is cool and helps me learn different concepts<br>
+      
+    </div>
+    <div class="col-sm-9" style="background-color:pink;">
+      CSC 543- HW 3 , adding to HW 2
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
